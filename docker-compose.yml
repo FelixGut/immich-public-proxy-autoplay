@@ -22,7 +22,9 @@ services:
           },
           "lightGallery": {
             "hideBarsDelay": 3330,
-            "hideScrollbar": true
+            "hideScrollbar": true,
+            "plugins": [lgAutoplay],
+            "autoplay": true
           }
         }
     healthcheck:
