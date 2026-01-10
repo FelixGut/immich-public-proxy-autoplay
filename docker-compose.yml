@@ -23,7 +23,8 @@ services:
           "lightGallery": {
             "hideBarsDelay": 3330,
             "hideScrollbar": true,
-            "autoplay": true
+            "autoplay": true,
+            "slideShowInterval": 8000
           }
         }
     healthcheck:
