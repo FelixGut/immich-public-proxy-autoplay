@@ -1,13 +1,30 @@
 services:
   immich-public-proxy:
-    image: alangrainger/immich-public-proxy:latest
-    container_name: immich-public-proxy
+    image: autoplay-test
+    container_name: immich-public-proxy-autoplay
     restart: always
     ports:
-      - "3000:3000"
+      - "2384:3000"
     environment:
-      PUBLIC_BASE_URL: https://your-proxy-url.com
-      IMMICH_URL: http://your-internal-immich-server:2283
+      PUBLIC_BASE_URL: https://test.org
+      IMMICH_URL: http://192.168.178.72:2283
+      #ipp is using lightgallery bundle but not enabling autopay in the view/gallery.ejs file. BUT autoplay wouldn't work anyway, since it doesn't load new images automaticly.
+      CONFIG: |
+        {
+          "ipp": {
+            "singleImageGallery": false,
+            "downloadedFilename": 2,
+            "showGalleryTitle": true,
+            "allowDownloadAll": 1,
+            "allowSlugLinks": true,
+            "showHomePage": false,
+            "showMetadata": true
+          },
+          "lightGallery": {
+            "hideBarsDelay": 3330,
+            "hideScrollbar": true
+          }
+        }
     healthcheck:
       test: curl -s http://localhost:3000/share/healthcheck -o /dev/null || exit 1
       start_period: 10s
