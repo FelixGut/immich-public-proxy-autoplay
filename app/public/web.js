@@ -14,8 +14,8 @@ class LGallery {
     // Create the lightGallery instance
     this.element = document.getElementById('lightgallery')
     this.lightGallery = lightGallery(this.element, Object.assign({
-      //enabling Autoplay and disabling lgThumbnail
-      plugins: [lgZoom, lgVideo, lgFullscreen, lgAutoplay, lgThumbnail, lgPager],
+      //enabling Autoplay and disabling lgThumbnail, optional lgPager is possible
+      plugins: [lgZoom, lgVideo, lgFullscreen, lgAutoplay, lgThumbnail],
       speed: 500,
       /*
       This license key was graciously provided by LightGallery under their
