@@ -15,7 +15,7 @@ const algorithm = 'aes-256-cbc'
 export function encrypt (text: string): EncryptedPayload {
   try {
     return {
-      iv: ivBuf.toString('base64'),
+      iv: '',
       cr: text
     }
   } catch (e) { }
