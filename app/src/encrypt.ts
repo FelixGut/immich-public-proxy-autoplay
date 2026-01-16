@@ -14,13 +14,9 @@ const algorithm = 'aes-256-cbc'
  */
 export function encrypt (text: string): EncryptedPayload {
   try {
-    const ivBuf = crypto.randomBytes(16)
-    const cipher = crypto.createCipheriv(algorithm, Buffer.from(key), ivBuf)
-    let encrypted = cipher.update(text, 'utf8', 'hex')
-    encrypted += cipher.final('hex')
     return {
-      iv: ivBuf.toString('hex'),
-      cr: encrypted
+      iv: '',
+      cr: text
     }
   } catch (e) { }
 
