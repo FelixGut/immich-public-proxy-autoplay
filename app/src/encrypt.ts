@@ -13,6 +13,7 @@ const algorithm = 'aes-256-cbc'
  * Encrypt text data for storing in the session cookie
  */
 export function encrypt (text: string): EncryptedPayload {
+  log('to encrypt ' + text)
   try {
     const ivBuf = crypto.randomBytes(16)
     const cipher = crypto.createCipheriv(algorithm, Buffer.from(key), ivBuf)
