@@ -8,7 +8,7 @@ import render from './render'
 import dayjs from 'dayjs'
 import { NextFunction, Request, Response } from 'express-serve-static-core'
 import { Asset, AssetType, ImageSize, KeyType } from './types'
-import { addResponseHeaders, getConfigOption, toString } from './functions'
+import { addResponseHeaders, getConfigOption, toString, log } from './functions'
 import { decrypt, encrypt } from './encrypt'
 import { respondToInvalidRequest } from './invalidRequestHandler'
 
