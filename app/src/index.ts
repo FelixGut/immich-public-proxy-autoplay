@@ -44,6 +44,8 @@ app.disable('x-powered-by')
  */
 const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
   const shareKey = req.params.key
+  log('all of req')
+  console.dir(req, { depth: null });
   const session = req.session?.['test']
   log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
   log('req.params.shareType ' + req.params.shareType)
