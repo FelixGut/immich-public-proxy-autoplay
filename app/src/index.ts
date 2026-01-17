@@ -46,7 +46,7 @@ const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
   const shareKey = req.params.key
   log('all of req.parms')
   console.dir(req.params, { depth: null });
-  const session = req.session?.['test']
+  const session = req.session?.[shareKey]
   log('all of req.session')
   console.dir(req.session, { depth: null });
   log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
