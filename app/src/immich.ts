@@ -73,9 +73,7 @@ class Immich {
 
     // A password is required, but the visitor-provided one doesn't match
     if (sharedLinkRes.passwordRequired && request.password) {
-      log('log test')
-      console.log('log test with console.log')
-      log('Invalid password for key for whatever reason' + request.key)
+      log('Invalid password for key ' + request.key)
       res.status(401)
       // Delete the cookie-session data, so that it doesn't keep saying "Invalid password"
       if (request.req?.session) delete request.req.session[request.key]
