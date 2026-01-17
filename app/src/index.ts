@@ -44,10 +44,10 @@ app.disable('x-powered-by')
  */
 const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
   const shareKey = req.params.key
-  const session = req.session?.[shareKey]
+  const session = req.session?.['test']
   log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
   log('req.params.shareType ' + req.params.shareType)
-  const test_session = req.session?.['test']
+  const test_session = req.session?.[shareKey]
   log('hard coded shareKey = test ' + test_session?.iv + ' ' + test_session?.cr)
   if (shareKey && session?.iv && session?.cr) {
     try {
@@ -92,6 +92,7 @@ app.get('/:shareType(share|s)/:key/:mode(download)?', decodeCookie, async (req, 
       mode: req.params.mode,
       password: req.password
     }, res)
+    log(res)
   }
 })
 
