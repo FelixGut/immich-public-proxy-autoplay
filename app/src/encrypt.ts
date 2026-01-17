@@ -18,6 +18,7 @@ export function encrypt (text: string): EncryptedPayload {
     const cipher = crypto.createCipheriv(algorithm, Buffer.from(key), ivBuf)
     let encrypted = cipher.update(text, 'utf8', 'hex')
     encrypted += cipher.final('hex')
+    console.log('password encyrpted  ' + test)
     return {
       iv: ivBuf.toString('hex'),
       cr: encrypted
@@ -38,7 +39,7 @@ export function decrypt (payload: EncryptedPayload): string {
     const decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), Buffer.from(payload.iv, 'hex'))
     let decrypted = decipher.update(payload.cr, 'hex', 'utf8')
     decrypted += decipher.final('utf8')
-    console.log('password decrypted')
+    console.log('password decrypted  ' + decrypted)
     return decrypted
   } catch (e) { }
   return ''
