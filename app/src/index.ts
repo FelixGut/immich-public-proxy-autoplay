@@ -98,6 +98,7 @@ app.get('/:shareType(share|s)/:key/:mode(download)?', decodeCookie, async (req, 
  */
 app.post('/share/unlock', async (req, res) => {
   if (req.session && req.body.key) {
+    console.log('logging request: ' + req)
     req.session[req.body.key] = encrypt(JSON.stringify({
       password: req.body.password,
       expires: dayjs().add(1, 'hour').format()
