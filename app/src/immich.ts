@@ -21,6 +21,8 @@ class Immich {
    * the possible attack surface of this app.
    */
   async request (endpoint: string) {
+    log('log test')
+    console.log('log test with console.log')
     try {
       const res = await fetch(this.apiUrl() + endpoint)
       if (res.status === 200) {
