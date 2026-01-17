@@ -39,7 +39,7 @@ export function decrypt (payload: EncryptedPayload): string {
     const decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), Buffer.from(payload.iv, 'hex'))
     let decrypted = decipher.update(payload.cr, 'hex', 'utf8')
     decrypted += decipher.final('utf8')
-    console.log("logging decrypt: " + text)
+    console.log("logging decrypt: " + decrypted)
     return decrypted
   } catch (e) { }
   return ''
