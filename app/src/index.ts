@@ -44,13 +44,12 @@ app.disable('x-powered-by')
  */
 const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
   const shareKey = req.params.key
-  log('all of req')
+  log('all of req.parms')
   console.dir(req.params, { depth: null });
   const session = req.session?.['test']
+  log('all of req.session')
+  console.dir(req.session, { depth: null });
   log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
-  log('req.params.shareType ' + req.params.shareType)
-  const test_session = req.session?.[shareKey]
-  log('hard coded shareKey = test ' + test_session?.iv + ' ' + test_session?.cr)
   if (shareKey && session?.iv && session?.cr) {
     try {
       const payload = JSON.parse(decrypt({
