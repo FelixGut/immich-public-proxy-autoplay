@@ -1,4 +1,5 @@
 import crypto from 'crypto'
+import log from './functions'
 
 interface EncryptedPayload {
   iv: string; // Initialization Vector (IV)
