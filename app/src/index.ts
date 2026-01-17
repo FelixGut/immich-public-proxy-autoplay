@@ -45,7 +45,7 @@ app.disable('x-powered-by')
 const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
   const shareKey = req.params.key
   const session = req.session?.[shareKey]
-  console.log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
+  log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
   if (shareKey && session?.iv && session?.cr) {
     try {
       const payload = JSON.parse(decrypt({
@@ -99,7 +99,7 @@ app.get('/:shareType(share|s)/:key/:mode(download)?', decodeCookie, async (req, 
  */
 app.post('/share/unlock', async (req, res) => {
   if (req.session && req.body.key) {
-    console.log('logging request: ' + req.session + ' ' + req.body.key)
+    log('logging request: ' + req.session + ' ' + req.body.key)
     req.session[req.body.key] = encrypt(JSON.stringify({
       password: req.body.password,
       expires: dayjs().add(1, 'hour').format()
