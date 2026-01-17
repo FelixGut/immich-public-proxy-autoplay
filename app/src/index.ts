@@ -81,7 +81,7 @@ app.get(/^(|\/share)\/healthcheck$/, async (_req, res) => {
  */
 app.get('/:shareType(share|s)/:key/:mode(download)?', decodeCookie, async (req, res) => {
   const keyType = immich.getKeyTypeFromShare(req.params.shareType)
-
+  log('key in url: ' + req.params.key)
   if (keyType === KeyType.slug && !getConfigOption('ipp.allowSlugLinks', true)) {
     // Slug type links are not allowed
     respondToInvalidRequest(res, 404, 'Slug links are disabled in config.json')
