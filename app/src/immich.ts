@@ -21,8 +21,6 @@ class Immich {
    * the possible attack surface of this app.
    */
   async request (endpoint: string) {
-    log('log test')
-    console.log('log test with console.log')
     try {
       const res = await fetch(this.apiUrl() + endpoint)
       if (res.status === 200) {
@@ -75,6 +73,8 @@ class Immich {
 
     // A password is required, but the visitor-provided one doesn't match
     if (sharedLinkRes.passwordRequired && request.password) {
+      log('log test')
+      console.log('log test with console.log')
       log('Invalid password for key ' + request.key)
       res.status(401)
       // Delete the cookie-session data, so that it doesn't keep saying "Invalid password"
