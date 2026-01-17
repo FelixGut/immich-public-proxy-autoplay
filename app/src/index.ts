@@ -108,6 +108,8 @@ app.post('/share/unlock', async (req, res) => {
       password: req.body.password,
       expires: dayjs().add(1, 'hour').format()
     }))
+    const test_key = immich.request (req.body.key)
+    log(test_key)
   }
   res.send()
 })
