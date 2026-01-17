@@ -45,7 +45,7 @@ app.disable('x-powered-by')
 const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
   const shareKey = req.params.key
   const session = req.session?.[shareKey]
-  console.log('shareKey & session ' + shareKey + ' | ' + session.iv + ' ' + session.cr)
+  console.log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
   if (shareKey && session?.iv && session?.cr) {
     try {
       const payload = JSON.parse(decrypt({
