@@ -13,7 +13,6 @@ const algorithm = 'aes-256-cbc'
  * Encrypt text data for storing in the session cookie
  */
 export function encrypt (text: string): EncryptedPayload {
-  console.log('logging encrypt: ' + text)
   try {
     const ivBuf = crypto.randomBytes(16)
     const cipher = crypto.createCipheriv(algorithm, Buffer.from(key), ivBuf)
@@ -39,7 +38,6 @@ export function decrypt (payload: EncryptedPayload): string {
     const decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), Buffer.from(payload.iv, 'hex'))
     let decrypted = decipher.update(payload.cr, 'hex', 'utf8')
     decrypted += decipher.final('utf8')
-    console.log('logging decrypt: ' + decrypted)
     return decrypted
   } catch (e) { }
   return ''
