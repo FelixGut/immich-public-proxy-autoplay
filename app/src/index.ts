@@ -92,6 +92,7 @@ app.get('/:shareType(share|s)/:key/:mode(download)?', decodeCookie, async (req, 
       mode: req.params.mode,
       password: req.password
     }, res)
+    log(res)
   }
 })
 
