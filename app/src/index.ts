@@ -53,7 +53,6 @@ const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
         cr: toString(session.cr)
       }))
       if (payload?.expires && dayjs(payload.expires) > dayjs()) {
-        console.log('req.password' + req.password)
         req.password = payload.password
       }
     } catch (e) { }
