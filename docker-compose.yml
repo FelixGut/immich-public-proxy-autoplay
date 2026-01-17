@@ -1,6 +1,6 @@
 services:
   immich-public-proxy:
-    image: alangrainger/immich-public-proxy:latest
+    image: pw-test
     container_name: immich-public-proxy-pw-test
     restart: always
     ports:
