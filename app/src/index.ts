@@ -47,7 +47,7 @@ const decodeCookie = (req: Request, _res: Response, next: NextFunction) => {
   const session = req.session?.[shareKey]
   log('shareKey & session ' + shareKey + ' | ' + session?.iv + ' ' + session?.cr)
   log('req.params.shareType ' + req.params.shareType)
-  log('hard coded shareKey = test ' + req.session?.[test])
+  log('hard coded shareKey = test ' + req.session?.['test'])
   if (shareKey && session?.iv && session?.cr) {
     try {
       const payload = JSON.parse(decrypt({
